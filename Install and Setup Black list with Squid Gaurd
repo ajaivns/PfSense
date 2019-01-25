@@ -1,0 +1,51 @@
+Confirgure blacklist on SquidGaurd proxy filter with Pfsense  
+
+1. Install package -
+
+Go to “System >> Package Manager”
+select “SquidGaurd” in “Available package”.
+
+2. Configure SquidGaurd -
+
+Go to “Services >> SquidGaurd Filter”
+
+3. Blacklist options -
+
+Blacklist: ticked
+Blacklist proxy: empty
+Blacklist URL: /tmp/blacklist.tar.gz
+
+Note :  
+1. Create multiple directorys like- Social, Shopping, Jobs, chats etc and create 2(domains and urls) file in each directory also pest info which you have like – url or domain in those file.
+2. It is not required to keep both url and domain.
+3. Convert these directories into “tar.gz” file (#tar -cvzf directory_location)
+
+4. Blacklist tab -
+
+Download tar.gz file.
+
+Note : The file you created above keep that tar file in /tmp on same server where pfsense installed.
+ 
+5. Create number of “Target Categories” (as per requirement) -
+
+exp-
+Name: Whitelist
+Order: ----
+Domain List: blank
+URL list: blank
+Regular Expression: blank
+Redirect: blank
+Description: Whitelist sites
+Save
+
+Name: Blacklist
+Order: ----
+Domain List: blank
+URL list: blank
+Regular Expression: Enter your own additions in here.
+Redirect: blank
+Description: Blacklist sites
+Save
+
+6. Group ACL tab
+Create as per requirenment
